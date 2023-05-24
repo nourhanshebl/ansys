@@ -1,0 +1,41 @@
+# encoding: utf-8
+# 2023 R1
+SetScriptVersion(Version="23.1.153")
+template1 = GetTemplate(TemplateName="Geometry")
+system1 = template1.CreateSystem()
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+geometry1.Exit()
+system2 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+geometry2 = system2.GetContainer(ComponentName="Geometry")
+geometry2.Edit()
+geometry1.Edit()
+geometry1.Exit()
+system3 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system2)
+geometryProperties1 = geometry1.GetGeometryProperties()
+geometryProperties1.GeometryImportAnalysisType = "AnalysisType_2D"
+geometry3 = system3.GetContainer(ComponentName="Geometry")
+geometry3.Edit()
+geometry3.Exit()
+geometry3.Edit()
+geometry3.Exit()
+geometryProperties2 = geometry3.GetGeometryProperties()
+geometryProperties2.GeometryImportAnalysisType = "AnalysisType_2D"
+geometry3.Edit()
+system4 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system3)
+geometry4 = system4.GetContainer(ComponentName="Geometry")
+geometryProperties3 = geometry4.GetGeometryProperties()
+geometryProperties3.GeometryImportAnalysisType = "AnalysisType_2D"
+geometry4.Edit()
+geometry3.Exit()
+geometry2.Exit()
+Save(Overwrite=True)
+geometryProperties3.GeometryImportAnalysisType = "AnalysisType_3D"
+Save(Overwrite=True)
+Save(Overwrite=True)
